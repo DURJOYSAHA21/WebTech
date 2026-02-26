@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Create Account</title>
+  <meta name="description" content="Create your account and start your journey" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* ===== PAGE LAYOUT ===== */
+    .page-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ===== VIDEO BACKGROUND ===== */
+    .video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        135deg,
+        rgba(13, 17, 23, 0.88) 0%,
+        rgba(13, 17, 23, 0.55) 50%,
+        rgba(13, 17, 23, 0.88) 100%
+      );
+    }
+
+    /* ===== GLASS CARD ===== */
+    .glass-card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 16px;
+      padding: 40px;
+      background: rgba(22, 27, 34, 0.65);
+      border: 1px solid rgba(48, 54, 61, 0.4);
+      border-radius: 16px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+
+    /* ===== HEADER ===== */
+    .form-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .form-title {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #e6edf3;
+      opacity: 0;
+      animation: float-up 0.6s ease-out forwards;
+    }
+
+    .form-subtitle {
+      margin-top: 8px;
+      font-size: 15px;
+      color: #7d8590;
+      opacity: 0;
+      animation: float-up 0.6s ease-out 0.1s forwards;
+    }
+
+    /* ===== FORM FIELDS ===== */
+    .form-group {
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: float-up 0.6s ease-out forwards;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.2s; }
+    .form-group:nth-child(2) { animation-delay: 0.3s; }
+    .form-group:nth-child(3) { animation-delay: 0.4s; }
+    .form-group:nth-child(4) { animation-delay: 0.5s; }
+
+    .form-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #7d8590;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: #7d8590;
+      transition: color 0.3s ease;
+      pointer-events: none;
+    }
+
+    .input-wrapper:focus-within .input-icon {
+      color: #2dd4a8;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 44px;
+      background: rgba(22, 27, 34, 0.5);
+      border: 1px solid rgba(48, 54, 61, 0.6);
+      border-radius: 10px;
+      color: #e6edf3;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      outline: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .form-input::placeholder {
+      color: #484f58;
+    }
+
+    .form-input:focus {
+      border-color: rgba(45, 212, 168, 0.5);
+      box-shadow: 0 0 0 3px rgba(45, 212, 168, 0.12), 0 0 20px rgba(45, 212, 168, 0.1);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #7d8590;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: #e6edf3;
+    }
+
+    /* ===== SVG ICONS ===== */
+    .icon-svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    /* ===== SUBMIT BUTTON ===== */
+    .submit-wrapper {
+      margin-top: 28px;
+      opacity: 0;
+      animation: float-up 0.6s ease-out 0.6s forwards;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 13px 24px;
+      background: #2dd4a8;
+      color: #0d1117;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      box-shadow: 0 0 30px rgba(45, 212, 168, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .btn-submit .arrow-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-submit:hover .arrow-icon {
+      transform: translateX(4px);
+    }
+
+    /* ===== FOOTER TEXT ===== */
+    .form-footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #7d8590;
+      opacity: 0;
+      animation: float-up 0.6s ease-out 0.7s forwards;
+    }
+
+    .form-footer a {
+      color: #2dd4a8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .form-footer a:hover {
+      color: #5aebc6;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes float-up {
+      0% {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(45, 212, 168, 0.05);
+      }
+      50% {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 40px rgba(45, 212, 168, 0.12);
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .glass-card {
+        padding: 28px 20px;
+        margin: 0 12px;
+      }
+      .form-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="video-bg">
+      <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Dark Overlay -->
+    <div class="video-overlay"></div>
+
+    <!-- Glass Card -->
+    <div class="glass-card">
+      <div class="form-header">
+        <h1 class="form-title">Create Account</h1>
+        <p class="form-subtitle">Join us and start your journey</p>
+      </div>
+
+      <form id="registerForm">
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="fullName">Full Name</label>
+          <div class="input-wrapper">
+            <svg class="input-icon icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input class="form-input" type="text" id="fullName" name="fullName" placeholder="John Doe" required />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <div class="input-wrapper">
+            <svg class="input-icon icon-svg" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <input class="form-input" type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-wrapper">
+            <svg class="input-icon icon-svg" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input class="form-input" type="password" id="password" name="password" placeholder="••••••••" required />
+            <button type="button" class="toggle-password" onclick="togglePass('password', this)">
+              <svg class="icon-svg eye-open" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="icon-svg eye-closed" viewBox="0 0 24 24" style="display:none"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <div class="input-wrapper">
+            <svg class="input-icon icon-svg" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <input class="form-input" type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required />
+            <button type="button" class="toggle-password" onclick="togglePass('confirmPassword', this)">
+              <svg class="icon-svg eye-open" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="icon-svg eye-closed" viewBox="0 0 24 24" style="display:none"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-wrapper">
+          <button type="submit" class="btn-submit">
+            Create Account
+            <svg class="icon-svg arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <p class="form-footer">
+          Already have an account? <a href="#">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Toggle password visibility
+    function togglePass(fieldId, btn) {
+      var input = document.getElementById(fieldId);
+      var eyeOpen = btn.querySelector('.eye-open');
+      var eyeClosed = btn.querySelector('.eye-closed');
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        eyeOpen.style.display = 'none';
+        eyeClosed.style.display = 'block';
+      } else {
+        input.type = 'password';
+        eyeOpen.style.display = 'block';
+        eyeClosed.style.display = 'none';
+      }
+    }
+
+    // Form submit handler
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var fullName = document.getElementById('fullName').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+
+      console.log('Registration:', { fullName: fullName, email: email });
+      alert('Account created successfully!');
+    });
+  </script>
+</body>
+</html>

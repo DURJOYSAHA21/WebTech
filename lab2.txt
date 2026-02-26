@@ -1,0 +1,5 @@
+block and inline element
+attribute
+title attribute if i use then if mouse hover then it will pop up the title and can be given in all element
+pic ar khetre abousloute link diye kemne pic load kore
+border-collaspe to collapse the borders
