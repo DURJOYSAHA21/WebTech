@@ -3,4 +3,14 @@ attribute
 title attribute if i use then if mouse hover then it will pop up the title and can be given in all element
 pic ar khetre abousloute link diye kemne pic load kore
 border-collaspe to collapse the borders
-djsl
+
+(8-12 combinator selector)
+child (div > p )
+decentdence means also apply for the childs the childs childrens
+siblings who ar in the same level 
+next sibling means exact down sibiling (div+p)
+subsuquent sibling same order a thaka like 1 ar 2 3 4 but 2 ar 3,4 not 1 (div ~ p)
+
+inline css
+internal css
+external css
