@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+</head>
+<body>
+    <link rel="stylesheet" href="style.css">
+    <div class="top">
+        <div class="title">
+            <h2>Welcome To The Shop</h2>
+        </div>       
+    </div>
+
+    <div class="info">
+        <table>
+            <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Avaliable Quantity</th>
+            </tr>
+
+        </table>
+    </div>  
+
+        <form >
+            <div class="inserting">
+
+            <input type="text" placeholder="Enter the item name" id="Item"> <br><br>
+            <input type="number" placeholder="Enter the Price" id="price"><br> <br>
+            <input type="number" placeholder="Enter the Quantity" id="quantity"><br> <br>
+            <input onclick=addtoshop(event) type ="submit" value="Add to Shop">
+
+            </div>
+        </form>
+
+        <div class="user">
+            <h3>Wanna Buy Something</h4>
+            <div class="inner">
+                <label>Select Item: </label>
+                <select id="buy"></select>
+            </div>
+
+            <input type="number" placeholder="Enter the Quantity" id="quan"><br> <br>
+            <input  type ="button" onclick="addtocart()" value="Add to Cart">
+        </div>
+ 
+
+    <script src="script.js">    </script>
+</body>
+</html>

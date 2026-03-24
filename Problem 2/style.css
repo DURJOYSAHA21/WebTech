@@ -1,0 +1,12 @@
+input
+{
+    padding: 20px;
+}
+body
+{
+    display: flex;
+    flex-direction:column;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}

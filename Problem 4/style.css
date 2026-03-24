@@ -1,0 +1,25 @@
+.contain
+{
+    position:relative;
+    display:flex;
+    width:300px;
+    height:200px;
+    justify-content:center;
+    align-items:center;
+    border: 2px solid black;
+    
+}
+
+.right
+{
+
+    position:absolute;
+    display:flex;
+    width: 80px;
+    height:80px;
+    align-items: center;
+    text-align:center;
+    border: 1px solid black;
+    bottom: 10px;
+    right: 10px
+}

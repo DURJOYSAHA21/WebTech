@@ -1,0 +1,79 @@
+.title
+{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:90vw;
+    height:10vh;
+    border: 2px solid black;
+    
+}
+
+.top
+{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.info
+{
+        display:flex;
+        flex-direction:column;
+        height:50vh;
+        width:40vw;
+        margin-top:20px;
+        border: 2px solid black;
+
+}
+table,th,td,tr
+{
+    border:1px solid black;
+    border-collapse:collapse;
+}
+
+.inserting
+{
+    display:flex;
+    position:absolute;
+    flex-direction:column;
+    bottom:5vh;
+    margin-top:20px;
+    width: 40vw;
+    height:30vh;
+
+}
+input
+{
+    padding: 10px;
+}
+.user
+{
+    display:flex;
+    position:absolute;
+    right:5vh;
+    top:20vh;
+    margin-top:5px;
+    flex-direction:column;
+    width: 40vw;
+    height:30vh;
+    
+}
+.inner
+{
+    display:flex;
+    margin-bottom: 3vh;
+   
+}
+#buy
+{
+    width:25vw;
+    margin-left:5px;
+}
+h3
+{
+    position:relative;
+    display:flex;
+    text-align:center;
+    justify-content:center;
+}

@@ -1,0 +1,30 @@
+body
+{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.contain
+{
+    display:flex;
+    flex-direction:column;
+    width:60vw;
+    height:60vh;
+    justify-content:center;
+    align-items:center;
+    border:2px solid black
+
+
+}
+
+
+
+input
+{
+    width:30vw;
+    padding: 10px;
+    
+}
