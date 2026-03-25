@@ -40,10 +40,25 @@
                 <label>Select Item: </label>
                 <select id="buy"></select>
             </div>
-
             <input type="number" placeholder="Enter the Quantity" id="quan"><br> <br>
             <input  type ="button" onclick="addtocart()" value="Add to Cart">
         </div>
+
+
+        <div class="cart">
+                <h3>Items you added in the cart</h3>
+                <table id="carts">
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </table>
+                <span id="total"></span>
+        </div>
+        <span id="total"></span>
+
  
 
     <script src="script.js">    </script>

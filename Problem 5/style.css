@@ -77,3 +77,20 @@ h3
     text-align:center;
     justify-content:center;
 }
+
+.cart
+{
+    position:absolute;
+    top: 50vh;
+    right: 5vh;
+    display:flex;
+    flex-direction:column;
+    width:40vw;
+    border: 2px solid black;
+   
+
+}
+#total
+{
+    
+}
