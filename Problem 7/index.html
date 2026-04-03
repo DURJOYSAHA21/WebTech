@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <title>Document</title>
+    <style>
+        li
+        {
+            list-style:none;
+            height: 15vh;
+            margin-top: 20px;
+            padding:5px;
+        }
+        ul
+        {
+            background-color:aquamarine;
+            width: 20vw;
+            padding :0;
+            margin:0;
+        }
+
+        li:first-child
+        {
+            font-weight:bolder;
+            color:blueviolet;
+        }
+        li:first-child + li
+        {
+            font-weight:600;
+        }
+
+    </style>
+</head>
+<body>
+    <aside>
+        <ul>
+            <li data-count="0" >Dashboard</li>
+            <li data-count="0" >Paitent Profiles</li>
+            <li data-count="0">Apointments</li>
+            <li data-count="0">Prescription</li>
+            <li data-count="0">Lab Results</li>
+            <li data-count="0">Messages</li>
+        </ul>
+    </aside>
+    
+
+    <script>
+        let uls= document.getElementsByTagName("ul")
+        let ul = uls[0];
+        let li= ul.getElementsByTagName("li")
+
+        let arr = Array.from(li);
+
+        arr.forEach(item =>{
+            item.addEventListener("click",function(){
+                let count = Number(item.dataset.count)
+                count++;
+                item.dataset.count=count;
+                sort();
+                
+            })
+        })
+
+        function sort()
+        {
+            arr.sort((a,b)=> Number(b.dataset.count)-Number(a.dataset.count))
+            arr.forEach(li=>ul.appendChild(li))
+        }
+        
+        
+
+    </script>
+</body>
+</html>
