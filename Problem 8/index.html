@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <style>
+        header
+        {
+            position: fixed;
+            width: 100vw;
+            height: 10vh;
+            top: 0;
+            font-size: 30px;
+            text-align:center;
+
+
+        }
+        footer
+        {
+            position: fixed;
+            bottom: 0;
+            width: 100vw;
+            text-align:center;
+            font-size: 15px;
+        }
+        body
+        {
+            padding-top:10vh;
+        }
+        .part
+        {
+            float: left;
+            
+            width: 45vw;
+            text-align: center;
+        }
+        .info1
+        {
+            position:relative;
+            text-align:left;
+            padding-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <header>My Learning Portal</header>
+    <div id="section">
+        <div class="part">
+            Course Enrollment Panel
+            <div class="info1">
+                Course Name: Javascript Basic <br>
+                Price : 1200 tk
+                <form>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" id="quantity">
+                </form>
+                <div id="show">
+
+                </div>
+                <div id="error"></div>
+                <div id="discount"></div>
+            </div>
+        </div>
+        <div class="part">
+            Enrollment Details Form
+
+            <form class="info1">
+                <label for="name">Full Name:</label>
+                <input type="text" name="name" id="name"> <br><br>
+                <label for="email">Email::</label>
+                <input type="email" name="email" id="email"><br><br>
+                
+                <select class="info1" id="drop">
+                <option selected  disabled></option>
+                <option value="online">Online Class</option>
+                <option value="offline">On-Campus Class</option>
+
+            </select>        
+            <br><br>
+            <label name="check">confirm my enrollment details are correct</label>    
+            <input type="checkbox" name="check" id="check">
+            <br> <br>
+            <input type="button" id="confirm" value="Confirm" style="display:none">
+            </form>
+            
+       
+        </div>
+    </div>
+
+    <footer>All Rights Reserved 2026</footer>
+    
+
+    <script>
+        let quantity= document.getElementById("quantity");
+        let drop =document.getElementById("drop")
+          let err=document.getElementById("error")
+          let check=document.getElementById("check")
+          let btn =document.getElementById("confirm")
+
+
+        
+
+        quantity.addEventListener("change", function()
+        {
+
+            
+            if(quantity.value <1 )
+            {
+                
+                err.innerHTML="The quantity cannot be 0 or less"
+
+            }
+            else
+            {
+                let num =Number(quantity.value);
+                let total= num*1200;
+                let info= document.getElementById("show");
+                info.innerHTML =`Total cost:${total}`
+                if(total>5000)
+               {
+                let dis=document.getElementById("discount")
+                dis.innerHTML=`You are eligible for a special discount.`
+               }
+               else
+               {
+                let dis=document.getElementById("discount")
+                dis.innerHTML=``
+
+               }
+                err.innerHTML=""
+              
+
+               
+            }
+
+        })
+        drop.addEventListener("change",function(){
+                if(drop.value==="online")
+                {
+                    let num =Number(quantity.value);
+                    let total= num*1200;
+                    let info= document.getElementById("show");
+                    info.innerHTML =`Total cost:${total}`
+                    info.innerHTML=`Total cost:${total+100}`
+                }
+                else if(drop.value="offline")
+                {
+                    let num =Number(quantity.value);
+                    let total= num*1200;
+                    let info= document.getElementById("show");
+                    info.innerHTML =`Total cost:${total}`
+                    info.innerHTML=`Total cost:${total+250}`
+
+                }
+        })
+
+        check.addEventListener("change", function(){
+            if(check.checked)
+            {
+                btn.style.display="block"
+            }
+            else if(!check.checked)
+            {
+                btn.style.display="none"
+            }
+        })
+
+    </script>
+</body>
+</html>
