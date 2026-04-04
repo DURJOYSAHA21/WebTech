@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div>Price: 1000tk</div>
+    <form>
+        <label for="quantity">Quantity:</labeL> 
+        <input type="number" id="quantity" name="quantity"> <br> <br>
+        <div id="show"></div>
+        <div id="error"></div>
+    </form>
+
+
+    <script>
+        let show=document.getElementById("show")
+        let quantity=document.getElementById("quantity")
+        let error =document.getElementById("error")
+
+        quantity.addEventListener("input", function()
+        {
+            if(quantity.value<0)
+            {
+                let total=0;
+                error.innerHTML="Value cannot be less then 0"
+                show.innerHTML=`The total Price is ${total}`
+                quantity.value=0;
+
+
+            }
+            else if(quantity.value>=0)
+            {
+                let total =Number(quantity.value)*1000;
+                show.innerHTML=`The total Price is ${total}`
+                error.innerHTML=""
+                if(quantity.value>1 && quantity.value<3 )
+                {
+                    alert("You are now eligible for gift coupon")
+                }
+            }
+
+
+            
+        })
+    </script>
+</body>
+</html>
