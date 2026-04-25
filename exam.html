@@ -1,59 +1,33 @@
-6.	What will be the output of the following code if you the “Double Values” button first and second click the “Remove Last” Button and third click the “Add Number” button.
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Practice</title>
+	<title>Document</title>
 </head>
 <body>
-  <p>Current Array: <span id="arrayDisplay">[1, 2, 3, 4, 5]</span></p>
+	<style>
+		div {
+			border: 2px solid black;
+		}
 
-  <button id="addNumberBtn">Add Number</button>
-  <button id="removeLastBtn">Remove Last</button>
-  <button id="doubleValuesBtn">Double Values</button>
-  <button id="resetBtn">Reset Array</button>
+		#container {
+			width: 300px;
+			height: 200px;
+			position: relative;
+		}
 
-  <script>
-    let arr = [1, 2, 3, 4, 5];
-    const display = document.getElementById('arrayDisplay');
-
-    function updateDisplay() {
-      display.textContent = JSON.stringify(arr);
-    }
-
-    function addNumber() {
-      let nextNumber = arr.length ? arr[arr.length - 1] + 1 : 1;
-      arr.push(nextNumber);
-      updateDisplay();
-    }
-
-    function removeLast() {
-      if (arr.length > 0) {
-        arr.pop();
-        updateDisplay();
-      } else {
-        alert("Array is already empty!");
-      }
-    }
-
-    function doubleValues() {
-      arr = arr.map(num => num * 2);
-      updateDisplay();
-    }
-
-    function resetArray() {
-      arr = [1, 2, 3, 4, 5];
-      updateDisplay();
-    }
-
-    document.getElementById('addNumberBtn').addEventListener('click', addNumber);
-    document.getElementById('removeLastBtn').addEventListener('click', removeLast);
-    document.getElementById('doubleValuesBtn').addEventListener('click', doubleValues);
-    document.getElementById('resetBtn').addEventListener('click', resetArray);
-
-    updateDisplay();
-  </script>
+		#bottom_right {
+			width: 60px;
+			height: 60px;
+			position: relative;
+			right: 1px;
+			bottom: 10px;
+		}
+	</style>
+	<div id="container">
+		Container Area
+		<div id="bottom_right">
+			Bottom Right
+		</div>
+	</div>	
 </body>
 </html>

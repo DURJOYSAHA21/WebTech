@@ -1,0 +1,30 @@
+.part
+{
+    float: left;
+    width:45vw;
+
+}
+header
+{
+    position:fixed;
+    top:10px;
+    text-align:center;
+    width:100vw;
+    padding:20px;
+    margin:10px;
+}
+body
+{
+    padding-top:10vh;
+}
+footer
+{
+    position: fixed;
+    bottom: 0;
+    text-align:center;
+    width:100vw;
+}
+#btn
+{
+    display:none;
+}
